@@ -29,7 +29,8 @@ type BotAPI struct {
 	Client          HTTPClient `json:"-"`
 	shutdownChannel chan interface{}
 
-	apiEndpoint string
+	apiEndpoint  string
+	fileEndpoint string
 }
 
 // NewBotAPI creates a new BotAPI instance.
@@ -74,6 +75,10 @@ func NewBotAPIWithClient(token, apiEndpoint string, client HTTPClient) (*BotAPI,
 // SetAPIEndpoint changes the Telegram Bot API endpoint used by the instance.
 func (bot *BotAPI) SetAPIEndpoint(apiEndpoint string) {
 	bot.apiEndpoint = apiEndpoint
+}
+
+func (bot *BotAPI) SetFileEndpoint(fileEndpoint string) {
+	bot.fileEndpoint = fileEndpoint
 }
 
 func buildParams(in Params) url.Values {
